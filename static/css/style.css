@@ -1,0 +1,105 @@
+
+@font-face {
+    font-family: 'neusharpbold';
+    src: url('neusharp-bold-webfont.woff2') format('woff2'),
+         url('neusharp-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+h1 {
+    text-align: center;
+    font-family: neusharpbold;
+    font-size: 100px;
+    color: whitesmoke;
+    background-color: #3269ba;
+    
+}
+
+h5 {
+    text-align: center;
+    font-family: neusharpbold;
+    font-size: 30px;
+    color: whitesmoke;
+    background-color:#babcbf;
+}
+
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    background-image: linear-gradient(#e6e8eb, #f2f3f5);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.clear {
+    background-color: red;
+    color: white;
+    font-family: neusharpbold;
+    font-size: 25px;
+    padding: 3px;
+    margin: 35px;    
+}
+.button {
+    background-color: greenyellow;
+    border: none;
+    color: white;
+    font-size: 50px;
+    display: inline-block;
+    font-family: neusharpbold;
+    margin: 0;
+    padding: 3px;
+}
+
+label {
+    font-family: 'neusharpbold';
+}
+
+
+#container {
+    text-align: center;
+}
+
+#clear_db {
+    text-align: center;
+}
+
+.inputs {
+    text-align: center;
+}
+
+.submit {
+    background-color: greenyellow;
+    color: white;
+    font-size: 20px;
+    display: inline-block;
+    font-family: neusharpbold;
+    margin: 0;
+    padding: 3px;
+}
+
+h3 {
+    font-family:'Lucida Sans';
+    font-size: 50px;
+    text-align: center;
+}
+
+h4 {
+    font-family: neusharpbold;
+    font-size: 40px;
+    text-align: center;
+}
+
+.table {
+    font-family: neusharpbold, consolas;
+    font-size: 30px;
+    text-align: center;
+    
+}
+
