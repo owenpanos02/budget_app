@@ -35,6 +35,7 @@ def start():
         print(category_df['category'])
         fig, ax = plt.subplots()
         ax.pie(category_df['amount_spent'], labels=category_df['category'], autopct='%1.1f%%')
+        os.remove("static\pitctures\plot.png")
         fig.savefig('static\pictures\plot.png', transparent=True)
 
         graph = os.path.join(app.config['UPLOAD_FOLDER'], 'plot.png')
