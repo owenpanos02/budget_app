@@ -1,7 +1,13 @@
 
 from flask import Flask, render_template, request, redirect
-app = Flask(__name__)
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import sqlite3
 
+app = Flask(__name__)
+picFolder = os.path.join('static', 'pictures')
+app.config['UPLOAD_FOLDER'] = picFolder
 @app.route("/")
 
 def index():
@@ -10,9 +16,7 @@ def index():
 @app.route("/start", methods=['GET', 'POST'])
 
 def start():
-    import pandas as pd
     if request.method == "POST":
-        import sqlite3
         connection = sqlite3.connect('transactions.db')
         cursor = connection.cursor()
         amount = request.form.get('amount')
@@ -27,9 +31,17 @@ def start():
         final = data.to_string()
         cursor.close()
         connection.commit()
+        category_df = pd.read_sql('SELECT category, SUM(amount) AS amount_spent FROM transactions GROUP BY category', connection)
+        print(category_df['category'])
+        fig, ax = plt.subplots()
+        ax.pie(category_df['amount_spent'], labels=category_df['category'], autopct='%1.1f%%')
+        fig.savefig('static\pictures\plot.png', transparent=True)
 
-        
-        return(render_template('start.html', value = final))
+        graph = os.path.join(app.config['UPLOAD_FOLDER'], 'plot.png')
+
+
+
+        return(render_template('start.html', value = final, plot_image = graph))
     else:
         return(render_template('start.html'))
 
@@ -45,6 +57,8 @@ def clear():
     connection.commit()
     print('DATABASE CLEARED...')
     return redirect('/start')
+
+
 
 
 
